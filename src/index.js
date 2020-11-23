@@ -2,7 +2,11 @@ const URL = "http://localhost:3000/dogs"
 
 document.addEventListener('DOMContentLoaded', () => {
     addDogsToTable()
+
+    form = document.querySelector('#dog-form')
+    form.addEventListener('submit', (e) => editDogForm(e))
 })
+
 
 function addDogsToTable() {
     fetch (URL)
@@ -27,7 +31,6 @@ function renderAllDogs(dogs) {
         dogSex.innerText = dog.sex
 
         editBtn.innerText = 'Edit'
-        editBtn.dataset.id = dog.id
         editBtn.addEventListener('click', () => editDogInfo(dog))
         
         btnHolder.appendChild(editBtn)
@@ -37,7 +40,6 @@ function renderAllDogs(dogs) {
 }
 
 function editDogInfo(dog) {
-    const form = document.querySelector('#dog-form')
     const nameField = document.querySelectorAll('input')[0]
     const breedField = document.querySelectorAll('input')[1]
     const sexField = document.querySelectorAll('input')[2]
@@ -45,20 +47,21 @@ function editDogInfo(dog) {
     nameField.value = dog.name
     breedField.value = dog.breed
     sexField.value = dog.sex
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault()
-        e.target.dataset.id = dog.id
-        submitEditedDog(e, dog)      
-    })
+    form.dataset.id = dog.id
 }
 
-function submitEditedDog(e, dog) {  
-    const nameField = document.querySelectorAll('input')[0]
-    const breedField = document.querySelectorAll('input')[1]
-    const sexField = document.querySelectorAll('input')[2]
+function editDogForm(event) {  
+    event.preventDefault()
+    const id = event.target.dataset.id   
+    const name = event.target.name.value
+    const breed = event.target.breed.value
+    const sex = event.target.sex.value
+    submitEditedDog(name, breed, sex, id)      
+}
+
+
+function submitEditedDog(name, breed, sex, id) {  
     const table = document.querySelector('tbody')
-    const id = e.target.dataset.id
 
     const dogObj = {
         method: 'PATCH',
@@ -67,9 +70,9 @@ function submitEditedDog(e, dog) {
             'Accept' : 'application/json',
         },
         body: JSON.stringify({
-            name: dog.name = nameField.value,
-            breed: dog.breed = breedField.value,
-            sex: dog.sex = sexField.value
+            name: name,
+            breed: breed,
+            sex: sex
         })           
     }
     fetch(URL + `/${id}`, dogObj)
@@ -79,4 +82,5 @@ function submitEditedDog(e, dog) {
         addDogsToTable()
     }) 
     .catch((error) => console.log(error))
+    
 }

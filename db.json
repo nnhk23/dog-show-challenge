@@ -2,14 +2,14 @@
   "dogs": [
     {
       "id": 1,
-      "name": "Baby",
-      "breed": "Scottish Deerhound",
-      "sex": "male"
+      "name": "BABY",
+      "breed": "Rhodesian Ridgeback",
+      "sex": "female"
     },
     {
       "id": 2,
-      "name": "Gracie123",
-      "breed": "Miniature Pinscher",
+      "name": "Teddy",
+      "breed": "Rhodesian Ridgeback",
       "sex": "female"
     },
     {
@@ -20,20 +20,20 @@
     },
     {
       "id": 4,
-      "name": "Harvey",
-      "breed": "Irish Spaniel",
-      "sex": "male"
+      "name": "Teddy",
+      "breed": "Rhodesian Ridgeback",
+      "sex": "female"
     },
     {
       "id": 5,
-      "name": "Gracie123",
+      "name": "GRACIE",
       "breed": "Miniature Pinscher",
       "sex": "female"
     },
     {
       "id": 6,
-      "name": "Oreo",
-      "breed": "English Springer",
+      "name": "Chloe",
+      "breed": "Dandie Terrier",
       "sex": "male"
     },
     {
@@ -44,7 +44,7 @@
     },
     {
       "id": 8,
-      "name": "Chloe",
+      "name": "ChloeS",
       "breed": "Dandie Terrier",
       "sex": "male"
     },
@@ -80,7 +80,7 @@
     },
     {
       "id": 14,
-      "name": "Coco",
+      "name": "Cocooo",
       "breed": "Maltese",
       "sex": "female"
     },
